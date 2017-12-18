@@ -93,8 +93,8 @@ def convert_mth_strings ( mth_string ):
 #### VARIABLES 1.0
 
 entity_id = "E5044_MBC_gov"
-url = "http://www.merton.gov.uk/council/dp-foi/opendata/spending.htm"
-archive_url = 'http://www.merton.gov.uk/council/dp-foi/opendata/older-spend.htm'
+url = "https://www2.merton.gov.uk/council/dp-foi/opendata/spending.htm"
+archive_url = 'https://www2.merton.gov.uk/council/dp-foi/opendata/older-spend.htm'
 errors = 0
 data = []
 
