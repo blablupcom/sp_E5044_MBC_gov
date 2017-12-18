@@ -42,14 +42,14 @@ def validateFilename(filename):
 def validateURL(url):
     try:
 #         r = urllib2.urlopen(url)
-        r = requests.get(url)
+        r = requests.get(url, verify=False)
         count = 1
 #         while r.getcode() == 500 and count < 4:
         while r.status_code == 500 and count < 4:
             print ("Attempt {0} - Status code: {1}. Retrying.".format(count, r.status_code))
             count += 1
 #             r = urllib2.urlopen(url)
-            r = requests.get(url)
+            r = requests.get(url, verify=False)
         sourceFilename = r.headers.get('Content-Disposition')
 
         if sourceFilename:
@@ -102,7 +102,7 @@ data = []
 #### READ HTML 1.0
 
 # html = urllib2.urlopen(url)
-html = requests.get(url)
+html = requests.get(url, verify=False)
 soup = BeautifulSoup(html.text, 'lxml')
 
 #### SCRAPE DATA
@@ -125,7 +125,7 @@ for link in links:
         todays_date = str(datetime.now())
         data.append([csvYr, csvMth, url])
 # archive_html = urllib2.urlopen(archive_url)
-archive_html = requests.get(archive_url)
+archive_html = requests.get(archive_url, verify=False)
 archive_soup = BeautifulSoup(archive_html.text, 'lxml')
 table = archive_soup.find('table',{'class':'t1'})
 links = table.findAll('a', href=True)
